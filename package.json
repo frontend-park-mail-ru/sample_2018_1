@@ -4,6 +4,8 @@
   "description": "hi",
   "main": "index.js",
   "scripts": {
+    "start": "DEBUG=* node server.js",
+    "start:raw": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dmitry Dorofeev",
