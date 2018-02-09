@@ -8,7 +8,9 @@ const logger = debug('mylogger')
 const server = http.createServer((req, res) => {
   logger(process.memoryUsage());
 
-  fs.readFile(path.join(__dirname, 'public', req.url), (err, data) => {
+  const filename = req.url === '/' ? 'index.html' : req.url;
+
+  fs.readFile(path.join(__dirname, 'public', filename), (err, data) => {
     if (err) {
       res.writeHead(404);
       res.end();
