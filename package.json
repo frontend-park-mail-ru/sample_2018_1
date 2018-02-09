@@ -1,0 +1,14 @@
+{
+  "name": "sample-2k18",
+  "version": "1.0.0",
+  "description": "hi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmitry Dorofeev",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^3.1.0"
+  }
+}
