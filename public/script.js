@@ -3,10 +3,11 @@
 
 const application = document.getElementById('application');
 const signupSection = document.getElementById('signup');
-const signinSection  = document.getElementById('signin');
-const scoreboardSection  = document.getElementById('scoreboard');
-const menuSection  = document.getElementById('menu');
+const signinSection = document.getElementById('signin');
+const scoreboardSection = document.getElementById('scoreboard');
+const menuSection = document.getElementById('menu');
 
+const subheader = document.getElementsByClassName('js-subheader')[0];
 const signupForm = document.getElementsByClassName('js-signup-form')[0];
 const signinForm = document.getElementsByClassName('js-signin-form')[0];
 const scoreboardContainer = document.getElementsByClassName('js-scoreboard-table')[0];
@@ -19,75 +20,51 @@ const sections = {
 	signup: signupSection,
 	signin: signinSection,
 	scoreboard: scoreboardSection,
-	menu: menuSection,
+	menu: menuSection
 };
-
-let users = {
-	'a.ostapenko@corp.mail.ru': {
-		email: 'a.ostapenko@corp.mail.ru',
-		age: 20,
-		score: 72
-	},
-	'd.dorofeev@corp.mail.ru': {
-		email: 'd.dorofeev@corp.mail.ru',
-		age: 20,
-		score: 100500
-	},
-	'a.udalov@corp.mail.ru': {
-		email: 'a.udalov@corp.mail.ru',
-		age: 20,
-		score: 72
-	},
-	'marina.titova@corp.mail.ru': {
-		email: 'marina.titova@corp.mail.ru',
-		age: 20,
-		score: 72
-	},
-	'a.tyuldyukov@corp.mail.ru': {
-		email: 'a.tyuldyukov@corp.mail.ru',
-		age: 20,
-		score: 72
-	}
-};
-users = Object.values(users);
-
-console.dir(users);
-
 
 function openScoreboard() {
-	const table = document.createElement('table');
-	const tbody = document.createElement('tbody');
-	table.appendChild(tbody);
-
 	scoreboardContainer.innerHTML = '';
 
-	users.forEach(function (user) {
-		const trow = document.createElement('tr');
+	loadAllUsers(function (err, users) {
+		if (err) {
+			console.error(err);
+			return;
+		}
 
-		const tdEmail = document.createElement('td');
-		tdEmail.textContent = user.email;
+		console.dir(users);
+		const table = document.createElement('table');
+		const tbody = document.createElement('tbody');
+		table.appendChild(tbody);
 
-		const tdAge = document.createElement('td');
-		tdAge.textContent = user.age;
+		users.forEach(function (user) {
+			const trow = document.createElement('tr');
 
-		const tdScore = document.createElement('td');
-		tdScore.textContent = user.score;
+			const tdEmail = document.createElement('td');
+			tdEmail.textContent = user.email;
 
-		trow.appendChild(tdEmail);
-		trow.appendChild(tdAge);
-		trow.appendChild(tdScore);
+			const tdAge = document.createElement('td');
+			tdAge.textContent = user.age;
 
-		tbody.appendChild(trow);
+			const tdScore = document.createElement('td');
+			tdScore.textContent = user.score;
+
+			trow.appendChild(tdEmail);
+			trow.appendChild(tdAge);
+			trow.appendChild(tdScore);
+
+			tbody.appendChild(trow);
+		});
+
+		scoreboardContainer.appendChild(table);
+
+		table.style.fontSize = '18px';
 	});
-
-	scoreboardContainer.appendChild(table);
-
-	table.style.fontSize = '18px';
 }
 
 function onSubmitSigninForm(evt) {
 	evt.preventDefault();
-	const fields = ['login', 'password'];
+	const fields = ['email', 'password'];
 
 	const form = evt.currentTarget;
 	const formElements = form.elements;
@@ -98,11 +75,22 @@ function onSubmitSigninForm(evt) {
 	}, {});
 
 	console.info('Авторизация пользователя', formdata);
+
+	loginUser(formdata, function (err, response) {
+		if (err) {
+			signupForm.reset();
+			alert('Неверно!');
+			return;
+		}
+
+		checkAuth();
+		openSection('menu');
+	})
 }
 
 function onSubmitSignupForm(evt) {
 	evt.preventDefault();
-	const fields = ['login', 'password', 'password_repeat'];
+	const fields = ['email', 'password', 'password_repeat', 'age'];
 
 	const form = evt.currentTarget;
 	const formElements = form.elements;
@@ -112,7 +100,18 @@ function onSubmitSignupForm(evt) {
 		return allfields;
 	}, {});
 
-	console.info('Ргистрация пользователя', formdata);
+	console.info('Регистрация пользователя', formdata);
+
+	signupUser(formdata, function (err, response) {
+		if (err) {
+			signupForm.reset();
+			alert('Неверно!');
+			return;
+		}
+
+		checkAuth();
+		openSection('menu');
+	});
 }
 
 const openFunctions = {
@@ -125,8 +124,8 @@ const openFunctions = {
 	signin: function () {
 		signinForm.removeEventListener('submit', onSubmitSigninForm);
 		signinForm.reset();
-		signinForm.addEventListener('click', onSubmitSigninForm);
-	},
+		signinForm.addEventListener('submit', onSubmitSigninForm);
+	}
 };
 
 function openSection(name) {
@@ -156,3 +155,112 @@ application.addEventListener('click', function (evt) {
 	console.log(`Открываем секцию`, section);
 	openSection(section);
 });
+
+
+function loadAllUsers(callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', '/users', true);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState != 4) {
+			return;
+		}
+
+		if (xhr.status === 200) {
+			const responseText = xhr.responseText;
+			const response = JSON.parse(responseText);
+			callback(null, response);
+		} else {
+			callback(xhr);
+		}
+	};
+
+	xhr.send();
+}
+
+function loadMe(callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', '/me', true);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState != 4) {
+			return;
+		}
+
+		if (xhr.status === 200) {
+			const responseText = xhr.responseText;
+			const response = JSON.parse(responseText);
+			callback(null, response);
+		} else {
+			callback(xhr);
+		}
+	};
+
+	xhr.withCredentials = true;
+
+	xhr.send();
+}
+
+
+function signupUser(user, callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', '/signup', true);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState != 4) {
+			return;
+		}
+
+		if (xhr.status < 300) {
+			const responseText = xhr.responseText;
+			const response = JSON.parse(responseText);
+			callback(null, response);
+		} else {
+			callback(xhr);
+		}
+	};
+
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	xhr.withCredentials = true;
+
+	xhr.send(JSON.stringify(user));
+}
+
+function loginUser(user, callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', '/login', true);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState != 4) {
+			return;
+		}
+
+		if (xhr.status < 300) {
+			const responseText = xhr.responseText;
+			const response = JSON.parse(responseText);
+			callback(null, response);
+		} else {
+			callback(xhr);
+		}
+	};
+
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	xhr.withCredentials = true;
+
+	xhr.send(JSON.stringify(user));
+}
+
+function checkAuth() {
+	loadMe(function (err, me) {
+		if (err) {
+			subheader.textContent = 'Вы неавторизованы';
+			return;
+		}
+
+		console.dir(me);
+		subheader.textContent = `Привет, ${me.email}!!!`;
+	});
+
+}
+
+checkAuth();

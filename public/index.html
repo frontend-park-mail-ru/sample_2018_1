@@ -16,6 +16,8 @@
 
 			<h1>Меню</h1>
 
+			<h2 class="js-subheader">Загрузка данных...</h2>
+
 			<ul>
 				<li><a href="#" data-section="signup">Регистрация</a></li>
 				<li><a href="#" data-section="signin">Авторизация</a></li>
@@ -30,9 +32,10 @@
 			<h1>Зарегистрируйтесь</h1>
 
 			<form class="js-signup-form">
-				<input type="text" name="login" id="login" placeholder="Введите ваш логин">
-				<input type="password" name="password" id="password" placeholder="Ваш пароль">
-				<input type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
+				<input required type="email" name="email" id="email" placeholder="Введите ваш email">
+				<input required type="number" name="age" id="age" placeholder="Ваш возраст">
+				<input required type="password" name="password" id="password" placeholder="Ваш пароль">
+				<input required type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
 				<input class="js-signup-submit" type="submit">
 			</form>
 
@@ -46,9 +49,9 @@
 			<h1>Войдите на сайт</h1>
 
 			<form class="js-signin-form">
-				<input type="text" name="login" id="login1" placeholder="Введите ваш логин">
-				<input type="password" name="password" id="password1" placeholder="Ваш пароль">
-				<input class="js-signin-submit" type="submit">
+				<input required type="email" name="email" id="email1" placeholder="Введите ваш email">
+				<input required type="password" name="password" id="password1" placeholder="Ваш пароль">
+				<input required class="js-signin-submit" type="submit">
 			</form>
 
 			<a href="#" data-section="menu">В меню</a>
