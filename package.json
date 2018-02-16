@@ -1,14 +1,17 @@
 {
-  "name": "sample-2k18",
+  "name": "sample",
   "version": "1.0.0",
-  "description": "hi",
+  "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "index.js",
   "scripts": {
     "start": "DEBUG=* node server.js",
     "start:raw": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dmitry Dorofeev",
+  "contributors": [
+    "Dmitry Dorofeev",
+    "Ostapenko Anatoliy"
+  ],
   "license": "MIT",
   "dependencies": {
     "debug": "^3.1.0"
