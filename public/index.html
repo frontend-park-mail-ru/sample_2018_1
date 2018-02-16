@@ -8,11 +8,71 @@
 	<link rel="stylesheet" href="/main.css">
 </head>
 <body>
-<div id="text">
-	Willkommen zu Frontend!!
-</div>
-<button id="button">Translate</button>
-<a href="/about.html">Open About</a>
+
+
+	<main id="application">
+
+		<section id="menu">
+
+			<h1>Меню</h1>
+
+			<ul>
+				<li><a href="#" data-section="signup">Регистрация</a></li>
+				<li><a href="#" data-section="signin">Авторизация</a></li>
+				<li><a href="#" data-section="scoreboard">Таблица лидеров</a></li>
+			</ul>
+
+		</section>
+
+
+		<section id="signup">
+
+			<h1>Зарегистрируйтесь</h1>
+
+			<form class="js-signup-form">
+				<input type="text" name="login" id="login" placeholder="Введите ваш логин">
+				<input type="password" name="password" id="password" placeholder="Ваш пароль">
+				<input type="password" name="password_repeat" id="password_repeat" placeholder="Посторите пароль">
+				<input class="js-signup-submit" type="submit">
+			</form>
+
+			<a href="#" data-section="menu">В меню</a>
+
+		</section>
+
+
+		<section id="signin">
+
+			<h1>Войдите на сайт</h1>
+
+			<form class="js-signin-form">
+				<input type="text" name="login" id="login1" placeholder="Введите ваш логин">
+				<input type="password" name="password" id="password1" placeholder="Ваш пароль">
+				<input class="js-signin-submit" type="submit">
+			</form>
+
+			<a href="#" data-section="menu">В меню</a>
+
+		</section>
+
+		<section id="scoreboard">
+
+			<h1>Таблица лидеров</h1>
+
+			<div class="js-scoreboard-table">
+
+			</div>
+
+			<a href="#" data-section="menu">В меню</a>
+
+		</section>
+
+	</main>
+
+
+
+
+
 <script src="/script.js"></script>
 </body>
 </html>
