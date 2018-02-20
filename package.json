@@ -4,9 +4,8 @@
   "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=* node server.js",
-    "start:raw": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=mylogger node server",
+    "start:raw": "node server"
   },
   "contributors": [
     "Dmitry Dorofeev",
@@ -14,6 +13,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "debug": "^3.1.0"
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "uuid": "^3.2.1"
   }
 }

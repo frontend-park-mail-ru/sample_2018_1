@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-  <div id="text">
-    Willkommen zu Frontend!!
-  </div>
-  <button id="button">Translate</button>
-  <script src="/script.js"></script>
+<main id="application">
+
+    <section id="menu">
+
+        <h1>Меню</h1>
+
+        <h2 class="js-subheader">Загрузка данных...</h2>
+
+        <ul>
+            <li><a href="#" data-section="signup">Регистрация</a></li>
+            <li><a href="#" data-section="signin">Авторизация</a></li>
+            <li><a href="#" data-section="scoreboard">Таблица лидеров</a></li>
+        </ul>
+
+    </section>
+
+
+    <section id="signup">
+
+        <h1>Зарегистрируйтесь</h1>
+
+        <form class="js-signup-form">
+            <input required type="email" name="email" id="email" placeholder="Введите ваш email">
+            <input required type="number" name="age" id="age" placeholder="Ваш возраст">
+            <input required type="password" name="password" id="password" placeholder="Ваш пароль">
+            <input required type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
+            <input class="js-signup-submit" type="submit">
+        </form>
+
+        <a href="#" data-section="menu">В меню</a>
+
+    </section>
+
+
+    <section id="signin">
+
+        <h1>Войдите на сайт</h1>
+
+        <form class="js-signin-form">
+            <input required type="email" name="email" id="email1" placeholder="Введите ваш email">
+            <input required type="password" name="password" id="password1" placeholder="Ваш пароль">
+            <input required class="js-signin-submit" type="submit">
+        </form>
+
+        <a href="#" data-section="menu">В меню</a>
+
+    </section>
+
+    <section id="scoreboard">
+
+        <h1>Таблица лидеров</h1>
+
+        <div class="js-scoreboard-table">
+
+        </div>
+
+        <a href="#" data-section="menu">В меню</a>
+
+    </section>
+
+</main>
+
+<script src="/application.js"></script>
 </body>
 </html>
