@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG=mylogger node server",
-    "start:raw": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:raw": "node server"
   },
   "contributors": [
     "Dmitry Dorofeev",

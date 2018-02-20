@@ -12,10 +12,6 @@ const signupForm = document.getElementsByClassName('js-signup-form')[0];
 const signinForm = document.getElementsByClassName('js-signin-form')[0];
 const scoreboardContainer = document.getElementsByClassName('js-scoreboard-table')[0];
 
-signupSection.hidden = true;
-signinSection.hidden = true;
-scoreboardSection.hidden = true;
-
 const sections = {
 	signup: signupSection,
 	signin: signinSection,
@@ -85,7 +81,7 @@ function onSubmitSigninForm(evt) {
 
 		checkAuth();
 		openSection('menu');
-	})
+	});
 }
 
 function onSubmitSignupForm(evt) {
@@ -130,14 +126,10 @@ const openFunctions = {
 
 function openSection(name) {
 	Object.keys(sections).forEach(function (key) {
-		if (key === name) {
-			sections[key].hidden = false;
-		} else {
-			sections[key].hidden = true;
-		}
+		sections[key].hidden = key !== name;
 	});
 
-	if (openFunctions[name]) {
+	if (typeof openFunctions[name] === 'function') {
 		openFunctions[name]();
 	}
 }
@@ -257,10 +249,10 @@ function checkAuth() {
 			return;
 		}
 
-		console.dir(me);
+		console.log('me is', me);
 		subheader.textContent = `Привет, ${me.email}!!!`;
 	});
-
 }
 
+openSection('menu');
 checkAuth();
