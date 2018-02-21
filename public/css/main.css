@@ -1,4 +1,5 @@
-@import url("system-font.css");
+@import url("./system-font.css");
+@import url("../js/components/Scoreboard/Scoreboard.css");
 
 html,
 body {
