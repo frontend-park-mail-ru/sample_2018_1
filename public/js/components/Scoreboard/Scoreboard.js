@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	class ScoreboardComponent {
 		constructor(selector = 'body') {
@@ -60,14 +60,14 @@
 				<table class="scoreboard__table">
 					<tbody>
 						${this._data.map(({email = 'lol@mail.ru', age = 13, score = 146} = {}) => {
-							return `
+				return `
 								<tr class="scoreboard__row">
 									<td>${email}</td>
 									<td>${age}</td>
 									<td>${score}</td>
 								</tr>
 							`;
-						}).join('\n')}
+			}).join('\n')}
 					</tbody>
 				</table>
 			`;

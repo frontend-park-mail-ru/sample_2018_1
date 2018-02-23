@@ -21,7 +21,7 @@ const sections = {
 };
 
 function openScoreboard() {
-	scoreboardComponent.clear()
+	scoreboardComponent.clear();
 
 	loadAllUsers(function (err, users) {
 		if (err) {
@@ -131,14 +131,14 @@ application.addEventListener('click', function (evt) {
 function loadAllUsers(callback) {
 	httpModule.doGet({
 		url: '/users',
-		callback,
+		callback
 	});
 }
 
 function loadMe(callback) {
 	httpModule.doGet({
 		url: '/me',
-		callback,
+		callback
 	});
 }
 
@@ -147,7 +147,7 @@ function signupUser(user, callback) {
 	httpModule.doPost({
 		url: '/signup',
 		callback,
-		data: user,
+		data: user
 	});
 }
 
@@ -155,7 +155,7 @@ function loginUser(user, callback) {
 	httpModule.doPost({
 		url: '/login',
 		callback,
-		data: user,
+		data: user
 	});
 }
 

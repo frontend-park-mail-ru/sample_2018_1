@@ -4,7 +4,7 @@
   "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=mylogger node server",
+    "start": "fest-build --dir=public && DEBUG=mylogger node server",
     "start:raw": "node server"
   },
   "contributors": [
