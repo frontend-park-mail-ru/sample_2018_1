@@ -1,7 +1,11 @@
 'use strict';
 
 const httpModule = new window.HttpModule();
-const scoreboardComponent = new window.ScoreboardComponent('.js-scoreboard-table');
+const EScoreboardTypes = window.EScoreboardTypes;
+const scoreboardComponent = new window.ScoreboardComponent({
+	selector: '.js-scoreboard-table',
+	type: EScoreboardTypes.TMPL,
+});
 
 const application = document.getElementById('application');
 const signupSection = document.getElementById('signup');
@@ -31,9 +35,7 @@ function openScoreboard() {
 
 		console.dir(users);
 		scoreboardComponent.data = users;
-		// scoreboardComponent.renderDOM();
-		// scoreboardComponent.renderString();
-		scoreboardComponent.renderTmpl();
+		scoreboardComponent.render();
 	});
 }
 

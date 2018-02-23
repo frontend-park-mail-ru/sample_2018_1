@@ -1,8 +1,12 @@
 (function () {
 
+	const noop = window.noop;
+	const EScoreboardTypes = window.EScoreboardTypes;
+
 	class ScoreboardComponent {
-		constructor(selector = 'body') {
+		constructor({selector = 'body', type = EScoreboardType.DOM} = {}) {
 			this._el = document.querySelector(selector);
+			this._type = type;
 		}
 
 		get data() {
@@ -17,7 +21,30 @@
 			this._el.innerHTML = '';
 		}
 
-		renderDOM() {
+		render() {
+			let method = noop;
+			switch (this._type) {
+				case EScoreboardTypes.DOM:
+					console.dir('renderDOM');
+					method = this._renderDOM;
+					break;
+				case EScoreboardTypes.STRING:
+					console.dir('renderString');
+					method = this._renderString;
+					break;
+				case EScoreboardTypes.TMPL:
+					console.dir('renderTmpl');
+					method = this._renderTmpl;
+					break;
+				default:
+					console.dir('render none (noop)');
+					break;
+			}
+
+			method.call(this);
+		}
+
+		_renderDOM() {
 			if (!this._data) {
 				return;
 			}
@@ -51,7 +78,7 @@
 			table.style.fontSize = '18px';
 		}
 
-		renderString() {
+		_renderString() {
 			if (!this._data) {
 				return;
 			}
@@ -73,7 +100,7 @@
 			`;
 		}
 
-		renderTmpl() {
+		_renderTmpl() {
 			if (!this._data) {
 				return;
 			}
