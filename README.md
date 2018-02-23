@@ -6,4 +6,5 @@
 
 ## Запуск локальной копии
 - `npm install`
+- `npm run build` &mdash; для компиляции fest-шаблонов
 - `npm start`
