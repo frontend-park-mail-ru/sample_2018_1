@@ -4,7 +4,7 @@
 	const EScoreboardTypes = window.EScoreboardTypes;
 
 	class ScoreboardComponent {
-		constructor({selector = 'body', type = EScoreboardType.DOM} = {}) {
+		constructor({selector = 'body', type = EScoreboardTypes.DOM} = {}) {
 			this._el = document.querySelector(selector);
 			this._type = type;
 		}
