@@ -1,5 +1,7 @@
 'use strict';
 
+const httpModule = new window.HttpModule();
+const scoreboardComponent = new window.ScoreboardComponent('.js-scoreboard-table');
 
 const application = document.getElementById('application');
 const signupSection = document.getElementById('signup');
@@ -10,7 +12,6 @@ const menuSection = document.getElementById('menu');
 const subheader = document.getElementsByClassName('js-subheader')[0];
 const signupForm = document.getElementsByClassName('js-signup-form')[0];
 const signinForm = document.getElementsByClassName('js-signin-form')[0];
-const scoreboardContainer = document.getElementsByClassName('js-scoreboard-table')[0];
 
 const sections = {
 	signup: signupSection,
@@ -20,7 +21,7 @@ const sections = {
 };
 
 function openScoreboard() {
-	scoreboardContainer.innerHTML = '';
+	scoreboardComponent.clear();
 
 	loadAllUsers(function (err, users) {
 		if (err) {
@@ -29,32 +30,10 @@ function openScoreboard() {
 		}
 
 		console.dir(users);
-		const table = document.createElement('table');
-		const tbody = document.createElement('tbody');
-		table.appendChild(tbody);
-
-		users.forEach(function (user) {
-			const trow = document.createElement('tr');
-
-			const tdEmail = document.createElement('td');
-			tdEmail.textContent = user.email;
-
-			const tdAge = document.createElement('td');
-			tdAge.textContent = user.age;
-
-			const tdScore = document.createElement('td');
-			tdScore.textContent = user.score;
-
-			trow.appendChild(tdEmail);
-			trow.appendChild(tdAge);
-			trow.appendChild(tdScore);
-
-			tbody.appendChild(trow);
-		});
-
-		scoreboardContainer.appendChild(table);
-
-		table.style.fontSize = '18px';
+		scoreboardComponent.data = users;
+		// scoreboardComponent.renderDOM();
+		// scoreboardComponent.renderString();
+		scoreboardComponent.renderTmpl();
 	});
 }
 
@@ -150,96 +129,34 @@ application.addEventListener('click', function (evt) {
 
 
 function loadAllUsers(callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open('GET', '/users', true);
-
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState != 4) {
-			return;
-		}
-
-		if (xhr.status === 200) {
-			const responseText = xhr.responseText;
-			const response = JSON.parse(responseText);
-			callback(null, response);
-		} else {
-			callback(xhr);
-		}
-	};
-
-	xhr.send();
+	httpModule.doGet({
+		url: '/users',
+		callback
+	});
 }
 
 function loadMe(callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open('GET', '/me', true);
-
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState != 4) {
-			return;
-		}
-
-		if (xhr.status === 200) {
-			const responseText = xhr.responseText;
-			const response = JSON.parse(responseText);
-			callback(null, response);
-		} else {
-			callback(xhr);
-		}
-	};
-
-	xhr.withCredentials = true;
-
-	xhr.send();
+	httpModule.doGet({
+		url: '/me',
+		callback
+	});
 }
 
 
 function signupUser(user, callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open('POST', '/signup', true);
-
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState != 4) {
-			return;
-		}
-
-		if (xhr.status < 300) {
-			const responseText = xhr.responseText;
-			const response = JSON.parse(responseText);
-			callback(null, response);
-		} else {
-			callback(xhr);
-		}
-	};
-
-	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-	xhr.withCredentials = true;
-
-	xhr.send(JSON.stringify(user));
+	httpModule.doPost({
+		url: '/signup',
+		callback,
+		data: user
+	});
 }
 
 function loginUser(user, callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open('POST', '/login', true);
-
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState != 4) {
-			return;
-		}
-
-		if (xhr.status < 300) {
-			const responseText = xhr.responseText;
-			const response = JSON.parse(responseText);
-			callback(null, response);
-		} else {
-			callback(xhr);
-		}
-	};
-
-	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-	xhr.withCredentials = true;
-
-	xhr.send(JSON.stringify(user));
+	httpModule.doPost({
+		url: '/login',
+		callback,
+		data: user
+	});
 }
 
 function checkAuth() {

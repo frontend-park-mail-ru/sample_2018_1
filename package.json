@@ -4,12 +4,14 @@
   "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=mylogger node server",
+    "build": "fest-build --dir=public",
+    "start": "npm run build && DEBUG=mylogger node server",
     "start:raw": "node server"
   },
   "contributors": [
     "Dmitry Dorofeev",
-    "Ostapenko Anatoliy"
+    "Ostapenko Anatoliy",
+    "Alexey Tyuldyukov"
   ],
   "license": "MIT",
   "dependencies": {
@@ -19,5 +21,8 @@
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "fest": "^0.12.1"
   }
 }
