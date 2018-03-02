@@ -14,8 +14,8 @@
 			return this._data;
 		}
 
-		set data(data = []) {
-			this._data = data;
+		set data(data) {
+			this._data = data || [];
 		}
 
 		clear() {
