@@ -1,6 +1,6 @@
 (function () {
 
-	const noop = () => null;
+	const noop = window.noop;
 
 	class HttpModule {
 
