@@ -1,6 +1,15 @@
 'use strict';
 
-window.HttpModule.baseUrl = '';
+switch (window.location.hostname) {
+	case 'localhost':
+		window.HttpModule.baseUrl = 'http://localhost:3001';
+		break;
+	case 'super-frontend.herokuapp.com':
+		window.HttpModule.baseUrl = '//super-frontend-backend.herokuapp.com';
+		break;
+	default:
+		window.HttpModule.baseUrl = '';
+}
 
 const httpModule = new window.HttpModule();
 const EScoreboardTypes = window.EScoreboardTypes;
