@@ -3,10 +3,11 @@
 	const noop = window.noop;
 
 	class HttpModule {
+		static baseUrl = '';
 
 		doGet({url = '/', callback = noop} = {}) {
 			const xhr = new XMLHttpRequest();
-			xhr.open('GET', url, true);
+			xhr.open('GET', HttpModule.baseUrl + url, true);
 
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState != 4) {
@@ -29,12 +30,12 @@
 
 			xhr.withCredentials = true;
 
-			xhr.send();
+			xhr.send(null);
 		}
 
 		doPost({url = '/', callback = noop, data = {}} = {}) {
 			const xhr = new XMLHttpRequest();
-			xhr.open('POST', url, true);
+			xhr.open('POST', HttpModule.baseUrl + url, true);
 
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState != 4) {
