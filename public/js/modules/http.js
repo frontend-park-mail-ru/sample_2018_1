@@ -3,8 +3,6 @@
 	const noop = window.noop;
 
 	class HttpModule {
-		static baseUrl;
-
 		doGet({url = '/', callback = noop} = {}) {
 			const xhr = new XMLHttpRequest();
 			xhr.open('GET', HttpModule.baseUrl + url, true);
@@ -63,6 +61,8 @@
 			xhr.send(JSON.stringify(data));
 		}
 	}
+
+	HttpModule.baseUrl = '';
 
 	window.HttpModule = HttpModule;
 })();
