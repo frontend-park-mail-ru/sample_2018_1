@@ -2,6 +2,7 @@
 
 	const noop = window.noop;
 	const EScoreboardTypes = window.EScoreboardTypes;
+	const ScoreboardTemplate = window.fest['js/components/Scoreboard/Scoreboard.tmpl'];
 
 	class ScoreboardComponent {
 		constructor({selector = 'body', type = EScoreboardTypes.DOM} = {}) {
@@ -87,14 +88,14 @@
 				<table class="scoreboard__table">
 					<tbody>
 						${this._data.map(({email = 'lol@mail.ru', age = 13, score = 146} = {}) => {
-				return `
+							return `
 								<tr class="scoreboard__row">
 									<td>${email}</td>
 									<td>${age}</td>
 									<td>${score}</td>
 								</tr>
 							`;
-			}).join('\n')}
+						}).join('\n')}
 					</tbody>
 				</table>
 			`;
@@ -105,10 +106,8 @@
 				return;
 			}
 
-			const template = window.fest['js/components/Scoreboard/Scoreboard.tmpl'](this._data);
-			this._el.innerHTML = template;
+			this._el.innerHTML = ScoreboardTemplate(this._data);
 		}
-
 	}
 
 	window.ScoreboardComponent = ScoreboardComponent;

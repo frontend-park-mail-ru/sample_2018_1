@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	const noop = () => null;
 
