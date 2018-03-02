@@ -3,7 +3,7 @@
 	const noop = window.noop;
 
 	class HttpModule {
-		static baseUrl = '';
+		static baseUrl;
 
 		doGet({url = '/', callback = noop} = {}) {
 			const xhr = new XMLHttpRequest();
