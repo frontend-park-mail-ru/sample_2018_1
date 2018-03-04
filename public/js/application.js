@@ -1,5 +1,16 @@
 'use strict';
 
+switch (window.location.hostname) {
+	case 'localhost':
+		window.HttpModule.baseUrl = 'http://localhost:3001';
+		break;
+	case 'super-frontend.herokuapp.com':
+		window.HttpModule.baseUrl = '//super-frontend-backend.herokuapp.com';
+		break;
+	default:
+		window.HttpModule.baseUrl = '';
+}
+
 const httpModule = new window.HttpModule();
 const EScoreboardTypes = window.EScoreboardTypes;
 const scoreboardComponent = new window.ScoreboardComponent({
@@ -21,7 +32,7 @@ const sections = {
 	signup: signupSection,
 	signin: signinSection,
 	scoreboard: scoreboardSection,
-	menu: menuSection
+	menu: menuSection,
 };
 
 function openScoreboard() {
@@ -102,7 +113,7 @@ const openFunctions = {
 		signinForm.removeEventListener('submit', onSubmitSigninForm);
 		signinForm.reset();
 		signinForm.addEventListener('submit', onSubmitSigninForm);
-	}
+	},
 };
 
 function openSection(name) {
@@ -133,14 +144,14 @@ application.addEventListener('click', function (evt) {
 function loadAllUsers(callback) {
 	httpModule.doGet({
 		url: '/users',
-		callback
+		callback,
 	});
 }
 
 function loadMe(callback) {
 	httpModule.doGet({
 		url: '/me',
-		callback
+		callback,
 	});
 }
 
@@ -149,7 +160,7 @@ function signupUser(user, callback) {
 	httpModule.doPost({
 		url: '/signup',
 		callback,
-		data: user
+		data: user,
 	});
 }
 
@@ -157,7 +168,7 @@ function loginUser(user, callback) {
 	httpModule.doPost({
 		url: '/login',
 		callback,
-		data: user
+		data: user,
 	});
 }
 

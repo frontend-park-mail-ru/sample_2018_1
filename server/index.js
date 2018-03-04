@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const url = require('url');
 const express = require('express');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
@@ -52,6 +53,58 @@ const users = {
 	}
 };
 const ids = {};
+
+const allowedOrigins = [
+	'localhost',
+	'super-frontend.herokuapp.com',
+];
+
+const CORS_HEADERS = {
+	requestedHeaders: 'Access-Control-Request-Headers'.toLowerCase(),
+	requestedMethod: 'Access-Control-Request-Method'.toLowerCase(),
+
+	allowOrigin: 'Access-Control-Allow-Origin'.toLowerCase(),
+	allowMethods: 'Access-Control-Allow-Methods'.toLowerCase(),
+	allowHeaders: 'Access-Control-Allow-Headers'.toLowerCase(),
+	allowCredentials: 'Access-Control-Allow-Credentials'.toLowerCase(),
+};
+
+app.use(function (req, res, next) {
+	const requestOrigin = req.headers['origin'];
+
+	if (typeof requestOrigin !== 'undefined') {
+		const requestOriginHostname = url.parse(requestOrigin).hostname;
+
+
+		const requestedHeaders = req.headers[CORS_HEADERS.requestedHeaders];
+		const requestedMethod = req.headers[CORS_HEADERS.requestedMethod];
+		logger(`Requested ${req.method} ${req.path} with origin ${requestOrigin} (${requestOriginHostname})`, {
+			requestedHeaders,
+			requestedMethod,
+		});
+
+		const headers = [];
+		if (requestedHeaders) {
+			headers.push([CORS_HEADERS.allowHeaders, requestedHeaders]);
+		}
+		if (requestedMethod) {
+			headers.push([CORS_HEADERS.allowMethods, 'GET, POST, OPTIONS']);
+		}
+
+		// res.setHeader(CORS_HEADERS.allowOrigin, '*');
+
+		if (allowedOrigins.includes(requestOriginHostname)) {
+			headers.push([CORS_HEADERS.allowOrigin, requestOrigin]);
+			headers.push([CORS_HEADERS.allowCredentials, 'true']);
+		}
+
+		const result = headers.map(pair => '\t' + pair.join(': ')).join('\n');
+		logger(`Response with headers:\n` + result);
+
+		headers.forEach(([name, value]) => res.setHeader(name, value));
+	}
+	next();
+});
 
 app.post('/signup', function (req, res) {
 	const password = req.body.password;

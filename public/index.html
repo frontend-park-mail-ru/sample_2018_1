@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="node-js-128.png">
     <title>Sample Application</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -30,10 +30,10 @@
         <h1>Зарегистрируйтесь</h1>
 
         <form class="js-signup-form">
-            <input required type="email" name="email" id="email" placeholder="Введите ваш email">
-            <input required type="number" name="age" id="age" placeholder="Ваш возраст">
-            <input required type="password" name="password" id="password" placeholder="Ваш пароль">
-            <input required type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
+            <input required autocomplete="email" type="email" name="email" id="email" placeholder="Введите ваш email">
+            <input required autocomplete="off" type="number" name="age" id="age" placeholder="Ваш возраст">
+            <input required autocomplete="off" type="password" name="password" id="password" placeholder="Ваш пароль">
+            <input required autocomplete="off" type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
             <input class="js-signup-submit" type="submit">
         </form>
 
@@ -47,8 +47,8 @@
         <h1>Войдите на сайт</h1>
 
         <form class="js-signin-form">
-            <input required type="email" name="email" id="email1" placeholder="Введите ваш email">
-            <input required type="password" name="password" id="password1" placeholder="Ваш пароль">
+            <input required autocomplete="email" type="email" name="email" id="email1" placeholder="Введите ваш email">
+            <input required autocomplete="off" type="password" name="password" id="password1" placeholder="Ваш пароль">
             <input required class="js-signin-submit" type="submit">
         </form>
 
