@@ -8,73 +8,31 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<main id="application">
 
-    <section id="menu">
+<main id="application"></main>
 
-        <h1>Меню</h1>
+<script src="/js/application.js"></script>
 
-        <h2 class="js-subheader">Загрузка данных...</h2>
+<script src="/js/modules/simple-module-system.js"></script>
+<script src="/js/modules/http.js"></script>
+<script src="/js/modules/router.js"></script>
 
-        <ul>
-            <li><a href="#" data-section="signup">Регистрация</a></li>
-            <li><a href="#" data-section="signin">Авторизация</a></li>
-            <li><a href="#" data-section="scoreboard">Таблица лидеров</a></li>
-        </ul>
-
-    </section>
-
-
-    <section id="signup">
-
-        <h1>Зарегистрируйтесь</h1>
-
-        <form class="js-signup-form">
-            <input required autocomplete="email" type="email" name="email" id="email" placeholder="Введите ваш email">
-            <input required autocomplete="off" type="number" name="age" id="age" placeholder="Ваш возраст">
-            <input required autocomplete="off" type="password" name="password" id="password" placeholder="Ваш пароль">
-            <input required autocomplete="off" type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль">
-            <input class="js-signup-submit" type="submit">
-        </form>
-
-        <a href="#" data-section="menu">В меню</a>
-
-    </section>
-
-
-    <section id="signin">
-
-        <h1>Войдите на сайт</h1>
-
-        <form class="js-signin-form">
-            <input required autocomplete="email" type="email" name="email" id="email1" placeholder="Введите ваш email">
-            <input required autocomplete="off" type="password" name="password" id="password1" placeholder="Ваш пароль">
-            <input required class="js-signin-submit" type="submit">
-        </form>
-
-        <a href="#" data-section="menu">В меню</a>
-
-    </section>
-
-    <section id="scoreboard">
-
-        <h1>Таблица лидеров</h1>
-
-        <div class="js-scoreboard-table">
-
-        </div>
-
-        <a href="#" data-section="menu">В меню</a>
-
-    </section>
-
-</main>
+<script src="/js/models/UsersModel.js"></script>
 
 <script src="/js/utils/noop.js"></script>
 <script src="/js/utils/EScoreboardTypes.js"></script>
-<script src="/js/modules/http.js"></script>
+
+<script src="/js/views/MenuView/MenuView.tmpl.js"></script>
+<script src="/js/views/ScoreboardView/ScoreboardView.tmpl.js"></script>
+<script src="/js/views/ProfileView/ProfileView.tmpl.js"></script>
+
+<script src="/js/views/MenuView/index.js"></script>
+<script src="/js/views/ScoreboardView/index.js"></script>
+<script src="/js/views/ProfileView/index.js"></script>
+<script src="/js/views/View/index.js"></script>
+
 <script src="/js/components/Scoreboard/Scoreboard.tmpl.js"></script>
 <script src="/js/components/Scoreboard/Scoreboard.js"></script>
-<script src="/js/application.js"></script>
+
 </body>
 </html>

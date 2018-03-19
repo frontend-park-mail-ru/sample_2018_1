@@ -1,0 +1,20 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+	<!--<fest:include context_name="" src="./blocks/menu-button.xml"/>-->
+
+	<section class="view menu-view">
+		<header class="view__header">Меню</header>
+
+		<div class="view__content">
+			<nav class="menu-view__navigation">
+				<ul class="menu-navigation">
+					<fest:for iterate="data.navItems" index="i" value="v">
+						<li class="menu-navigation__item">
+							<a href="{v.href}"><fest:value>v.title</fest:value></a>
+						</li>
+					</fest:for>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+</fest:template>

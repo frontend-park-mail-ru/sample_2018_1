@@ -1,0 +1,35 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+	<!--<fest:include context_name="" src="./blocks/menu-button.xml"/>-->
+
+	<section class="view profile-view">
+		<header class="view__header">Профиль пользователя</header>
+
+		<div class="view__content">
+			<div class="profile-view__profile profile">
+				<p class="profile__field">
+					<strong class="profile__field-name">Email</strong>
+					<span class="profile__field-value">
+						<fest:value>data.profile.email</fest:value>
+					</span>
+				</p>
+				<p class="profile__field">
+					<strong class="profile__field-name">Возраст</strong>
+					<span class="profile__field-value">
+						<fest:value>data.profile.age</fest:value>
+					</span>
+				</p>
+				<p class="profile__field">
+					<strong class="profile__field-name">Рейтинг</strong>
+					<span class="profile__field-value">
+						<fest:value>data.profile.score</fest:value>
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<footer class="view__footer">
+			<a href="/">В меню</a>
+		</footer>
+	</section>
+
+</fest:template>

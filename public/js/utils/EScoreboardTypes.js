@@ -1,9 +1,7 @@
-(function () {
-	const EScoreboardTypes = {
-		DOM: 'dom',
+define('EScoreboardTypes', function (require) {
+	return {
 		STRING: 'string',
-		TMPL: 'tmpl'
+		TMPL: 'tmpl',
+		DOM: 'dom'
 	};
-
-	window.EScoreboardTypes = EScoreboardTypes;
-})();
+});

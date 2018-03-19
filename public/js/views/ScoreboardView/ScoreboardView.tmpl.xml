@@ -1,0 +1,15 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+
+	<section class="view scoreboard-view">
+		<header class="view__header">Таблица лидеров</header>
+
+		<div class="view__content">
+			<div class="scoreboard-view__table js-scoreboard-root"></div>
+		</div>
+
+		<footer class="view__footer">
+			<a href="/">В меню</a>
+		</footer>
+	</section>
+
+</fest:template>

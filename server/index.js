@@ -3,6 +3,7 @@
 const path = require('path');
 const url = require('url');
 const express = require('express');
+const fallback = require('express-history-api-fallback');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
 const morgan = require('morgan');
@@ -13,9 +14,11 @@ const logger = debug('mylogger');
 logger('Starting app');
 const app = express();
 
+const root = path.resolve(__dirname, '..', 'public');
 
 app.use(morgan('dev'));
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.static(root));
+app.use(fallback('index.html', {root}));
 app.use(body.json());
 app.use(cookie());
 
@@ -56,7 +59,7 @@ const ids = {};
 
 const allowedOrigins = [
 	'localhost',
-	'super-frontend.herokuapp.com',
+	'super-frontend.herokuapp.com'
 ];
 
 const CORS_HEADERS = {
@@ -66,7 +69,7 @@ const CORS_HEADERS = {
 	allowOrigin: 'Access-Control-Allow-Origin'.toLowerCase(),
 	allowMethods: 'Access-Control-Allow-Methods'.toLowerCase(),
 	allowHeaders: 'Access-Control-Allow-Headers'.toLowerCase(),
-	allowCredentials: 'Access-Control-Allow-Credentials'.toLowerCase(),
+	allowCredentials: 'Access-Control-Allow-Credentials'.toLowerCase()
 };
 
 app.use(function (req, res, next) {
@@ -80,7 +83,7 @@ app.use(function (req, res, next) {
 		const requestedMethod = req.headers[CORS_HEADERS.requestedMethod];
 		logger(`Requested ${req.method} ${req.path} with origin ${requestOrigin} (${requestOriginHostname})`, {
 			requestedHeaders,
-			requestedMethod,
+			requestedMethod
 		});
 
 		const headers = [];
