@@ -2,7 +2,7 @@
 
 	if (
 		window.location.hostname === 'super-frontend.herokuapp.com'
-		&& window.location.protocol !== 'https'
+		&& window.location.protocol !== 'https:'
 	) {
 		window.location.assign(window.location.href.replace('http://', 'https://'));
 		return;
