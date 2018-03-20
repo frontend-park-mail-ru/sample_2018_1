@@ -1,0 +1,30 @@
+.profile-view {
+
+}
+
+.profile-view__profile {
+
+}
+
+.profile {
+	display: block;
+	width: 100%;
+}
+
+.profile__field {
+	display: block;
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.profile__field-name {
+	display: inline-block;
+	width: 30%;
+	font-size: 24px;
+}
+
+.profile__field-value {
+	display: inline-block;
+	width: 70%;
+	font-size: 24px;
+}

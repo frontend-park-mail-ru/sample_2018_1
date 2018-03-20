@@ -16,11 +16,11 @@
 				</fest:for>
 			</div>
 			<div class="form__controls">
-				<button type="reset">
+				<button type="reset" class="form__control">
 					<fest:value>params.resetText</fest:value>
 				</button>
 
-				<button type="submit">
+				<button type="submit" class="form__control">
 					<fest:value>params.submitText</fest:value>
 				</button>
 			</div>

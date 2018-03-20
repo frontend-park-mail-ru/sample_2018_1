@@ -3,13 +3,33 @@
 }
 
 .form__fields {
-
+	display: block;
+	margin-bottom: 24px;
 }
 
 .form__field {
+	display: block;
+	margin-bottom: 12px;
 
 }
 
-.form__controls {
+.form__field-label {
+	display: inline-block;
+	font-size: 18px;
+	margin-bottom: 6px;
+}
 
+.form__field-input {
+	font-size: 22px;
+	width: 100%;
+}
+
+.form__controls {
+	display: block;
+	text-align: center;
+}
+
+.form__control {
+	display: inline-block;
+	margin: 0 12px;
 }

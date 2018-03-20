@@ -8,4 +8,7 @@
 
 .scoreboard__table {
 	font-size: 20px;
+	border-collapse: separate;
+	border-spacing: 6px;
+	width: 100%;
 }

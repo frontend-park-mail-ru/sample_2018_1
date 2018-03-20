@@ -1,5 +1,13 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
 	<table class="scoreboard__table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Email</th>
+				<th>Возраст</th>
+				<th>Рейтинг</th>
+			</tr>
+		</thead>
 		<tbody>
 			<fest:for iterate="data" index="i" value="v">
 				<tr class="scoreboard__row">

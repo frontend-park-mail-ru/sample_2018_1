@@ -12,6 +12,7 @@ define('View', function (require) {
 			this.active = false;
 
 			this.el = document.createElement('div');
+			this.hide();
 		}
 
 		hide() {
