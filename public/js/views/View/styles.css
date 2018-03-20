@@ -1,5 +1,6 @@
 .view {
-	display: block;
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	height: 100%;
 	width: 80%;
@@ -17,16 +18,16 @@
 }
 
 .view__content {
+	flex: 1;
+	overflow: auto;
 	display: block;
 	padding-top: 24px;
-	max-height: calc(100% - 72px - 96px);
 	width: 100%;
 }
 
 .view__footer {
-	position: absolute;
-	display: block;
-	bottom: 0;
-	height: 96px;
-	width: 100%;
+	min-height: 72px;
+	line-height: 72px;
+	font-size: 56px;
+	text-align: center;
 }

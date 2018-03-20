@@ -14,6 +14,8 @@
 				</ul>
 			</nav>
 		</div>
+
+		<footer class="view__footer"></footer>
 	</section>
 
 </fest:template>
