@@ -1,6 +1,3 @@
-(function () {
-
-	const noop = () => null;
-
-	window.noop = noop;
-})();
+define('noop', function (require) {
+	return () => null;
+});

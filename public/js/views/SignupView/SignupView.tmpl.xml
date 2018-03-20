@@ -1,0 +1,17 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+
+	<section class="view signup-view">
+		<header class="view__header">Зарегистрируйтесь!</header>
+
+		<div class="view__content">
+			<div class="signup-view__form js-signup-form-root">
+				<fest:include src="../../components/Form/Form.tmpl.xml"/>
+			</div>
+		</div>
+
+		<footer class="view__footer">
+			<a href="/">В меню</a>
+		</footer>
+	</section>
+
+</fest:template>

@@ -1,12 +1,12 @@
-(function () {
+define('ScoreboardComponent', function (require) {
+	const noop = require('noop');
+	const EScoreboardTypes = require('EScoreboardTypes');
 
-	const noop = window.noop;
-	const EScoreboardTypes = window.EScoreboardTypes;
 	const ScoreboardTemplate = window.fest['js/components/Scoreboard/Scoreboard.tmpl'];
 
-	class ScoreboardComponent {
-		constructor({selector = 'body', type = EScoreboardTypes.DOM} = {}) {
-			this._el = document.querySelector(selector);
+	return class ScoreboardComponent {
+		constructor({selector = 'body', el = null, type = EScoreboardTypes.TMPL} = {}) {
+			this._el = el || document.querySelector(selector);
 			this._type = type;
 		}
 
@@ -84,18 +84,20 @@
 				return;
 			}
 
+			const tbody = this._data.map(({email = 'lol@mail.ru', age = 13, score = 146} = {}) => {
+				return `
+					<tr class="scoreboard__row">
+						<td>${email}</td>
+						<td>${age}</td>
+						<td>${score}</td>
+					</tr>
+				`;
+			}).join('\n');
+
 			this._el.innerHTML = `
 				<table class="scoreboard__table">
 					<tbody>
-						${this._data.map(({email = 'lol@mail.ru', age = 13, score = 146} = {}) => {
-							return `
-								<tr class="scoreboard__row">
-									<td>${email}</td>
-									<td>${age}</td>
-									<td>${score}</td>
-								</tr>
-							`;
-						}).join('\n')}
+						${tbody}
 					</tbody>
 				</table>
 			`;
@@ -108,8 +110,5 @@
 
 			this._el.innerHTML = ScoreboardTemplate(this._data);
 		}
-	}
-
-	window.ScoreboardComponent = ScoreboardComponent;
-
-})();
+	};
+});

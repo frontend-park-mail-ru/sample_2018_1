@@ -1,0 +1,31 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+	<fest:set name="form">
+		<form class="form js-form">
+			<div class="form__fields">
+				<fest:for iterate="params.fields" index="i" value="v">
+					<div class="form__field">
+						<label>
+							<span class="form__field-label">
+								<fest:value>v.labelText</fest:value>
+							</span>
+							<br/>
+							<input class="form__field-input" type="{v.inputType}" name="{v.inputName}"
+								   placeholder="{v.inputPlaceholder}" required="required"/>
+						</label>
+					</div>
+				</fest:for>
+			</div>
+			<div class="form__controls">
+				<button type="reset" class="form__control">
+					<fest:value>params.resetText</fest:value>
+				</button>
+
+				<button type="submit" class="form__control">
+					<fest:value>params.submitText</fest:value>
+				</button>
+			</div>
+		</form>
+	</fest:set>
+
+	<fest:get name="form">data.form || data</fest:get>
+</fest:template>

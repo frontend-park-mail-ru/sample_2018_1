@@ -1,9 +1,8 @@
-(function () {
-
-	const noop = window.noop;
+define('HttpModule', function (require) {
+	const noop = require('noop');
 
 	class HttpModule {
-		doGet({url = '/', callback = noop} = {}) {
+		static doGet({url = '/', callback = noop} = {}) {
 			const xhr = new XMLHttpRequest();
 			xhr.open('GET', HttpModule.baseUrl + url, true);
 
@@ -12,7 +11,7 @@
 					return;
 				}
 
-				if (xhr.status === 200) {
+				if (xhr.status < 300) {
 					const responseText = xhr.responseText;
 					try {
 						const response = JSON.parse(responseText);
@@ -31,7 +30,7 @@
 			xhr.send(null);
 		}
 
-		doPost({url = '/', callback = noop, data = {}} = {}) {
+		static doPost({url = '/', callback = noop, data = {}} = {}) {
 			const xhr = new XMLHttpRequest();
 			xhr.open('POST', HttpModule.baseUrl + url, true);
 
@@ -64,5 +63,5 @@
 
 	HttpModule.baseUrl = '';
 
-	window.HttpModule = HttpModule;
-})();
+	return HttpModule;
+});
