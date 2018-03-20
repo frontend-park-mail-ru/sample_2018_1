@@ -1,3 +1,7 @@
-.login-view {
-
+.login-view__form {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
+
