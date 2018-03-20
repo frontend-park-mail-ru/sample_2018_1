@@ -1,5 +1,6 @@
 define('View', function (require) {
 	const Router = require('Router');
+	const bus = require('bus');
 
 	return class View {
 		constructor(name) {
@@ -7,17 +8,21 @@ define('View', function (require) {
 			this.attrs = {};
 			this.tmpl = window.fest[name];
 			this.router = new Router;
+			this.bus = bus;
+			this.active = false;
 
 			this.el = document.createElement('div');
 		}
 
 		hide() {
 			this.el.setAttribute('hidden', 'hidden');
+			this.active = false;
 			return this;
 		}
 
 		show() {
 			this.el.removeAttribute('hidden');
+			this.active = true;
 			return this;
 		}
 

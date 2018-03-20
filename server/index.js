@@ -18,7 +18,6 @@ const root = path.resolve(__dirname, '..', 'public');
 
 app.use(morgan('dev'));
 app.use(express.static(root));
-app.use(fallback('index.html', {root}));
 app.use(body.json());
 app.use(cookie());
 
@@ -176,6 +175,8 @@ app.get('/users', function (req, res) {
 
 	res.json(scorelist);
 });
+
+app.use(fallback('index.html', {root}));
 
 const port = process.env.PORT || 3000;
 
