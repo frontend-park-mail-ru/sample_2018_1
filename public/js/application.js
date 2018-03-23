@@ -19,6 +19,7 @@
 		const ScoreboardView = require('ScoreboardView');
 		const LoginView = require('LoginView');
 		const SignupView = require('SignupView');
+		const ChatView = require('ChatView');
 
 		switch (window.location.hostname) {
 			case 'localhost':
@@ -42,6 +43,7 @@
 					.add('/signup', SignupView)
 					.add('/profile', ProfileView)
 					.add('/scoreboard', ScoreboardView)
+					.add('/chat', ChatView)
 					.start();
 			})
 			.catch(console.error);

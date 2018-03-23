@@ -9,10 +9,12 @@ const cookie = require('cookie-parser');
 const morgan = require('morgan');
 const debug = require('debug');
 const uuid = require('uuid/v4');
+const ws = require('express-ws');
 
 const logger = debug('mylogger');
 logger('Starting app');
 const app = express();
+ws(app);
 
 const root = path.resolve(__dirname, '..', 'public');
 
@@ -174,6 +176,36 @@ app.get('/users', function (req, res) {
 		});
 
 	res.json(scorelist);
+});
+
+const clients = {};
+app.ws('/ws', (ws, req) => {
+	const id = Math.round(Math.random() * 100);
+	clients[id] = ws;
+	logger('новое соединение ' + id);
+
+	ws.on('message', (message) => {
+		try {
+			const {type, payload} = JSON.parse(message);
+			logger('получено сообщение ' + payload);
+
+			Object
+				.values(clients)
+				.forEach((client) => {
+					client.send(JSON.stringify({
+						type,
+						payload,
+					}))
+				});
+		} catch (e) {
+			logger('onmessage error');
+		}
+	});
+
+	ws.on('close', () => {
+		logger('соединение закрыто ' + id);
+		delete clients[id];
+	});
 });
 
 app.use(fallback('index.html', {root}));

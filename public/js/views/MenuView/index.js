@@ -21,6 +21,10 @@ define('MenuView', function (require) {
 					{
 						title: 'Профиль пользователя',
 						href: '/profile'
+					},
+					{
+						title: 'Чат',
+						href: '/chat'
 					}
 				];
 			} else {
@@ -36,6 +40,10 @@ define('MenuView', function (require) {
 					{
 						title: 'Список пользователей',
 						href: '/scoreboard'
+					},
+					{
+						title: 'Чат',
+						href: '/chat'
 					}
 				];
 			}
