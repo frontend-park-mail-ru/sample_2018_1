@@ -1,0 +1,11 @@
+.chat-view__form, .chat-view__chat {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.chat-view__chat {
+	margin-bottom: 30px;
+	text-align: center;
+}

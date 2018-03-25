@@ -11,7 +11,7 @@ define('HttpModule', function (require) {
 					return;
 				}
 
-				if (xhr.status < 300) {
+				if (xhr.status && xhr.status < 300) {
 					const responseText = xhr.responseText;
 					try {
 						const response = JSON.parse(responseText);
@@ -39,7 +39,7 @@ define('HttpModule', function (require) {
 					return;
 				}
 
-				if (xhr.status < 300) {
+				if (xhr.status && xhr.status < 300) {
 					const responseText = xhr.responseText;
 
 					try {

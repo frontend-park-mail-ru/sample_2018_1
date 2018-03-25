@@ -8,6 +8,7 @@
 @import url("../js/views/ProfileView/styles.css");
 @import url("../js/views/ScoreboardView/styles.css");
 @import url("../js/views/SignupView/styles.css");
+@import url("../js/views/ChatView/styles.css");
 
 html, body {
 	display: flex;

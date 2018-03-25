@@ -13,6 +13,7 @@
   "contributors": [
     "Dmitry Dorofeev",
     "Ostapenko Anatoliy",
+    "Titova Marina",
     "Alexey Tyuldyukov"
   ],
   "license": "MIT",
@@ -22,6 +23,7 @@
     "debug": "^3.1.0",
     "express": "^4.16.3",
     "express-history-api-fallback": "^2.2.1",
+    "express-ws": "^3.0.0",
     "fest": "^0.12.1",
     "morgan": "^1.9.0",
     "uuid": "^3.2.1"

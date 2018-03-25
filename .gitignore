@@ -559,3 +559,4 @@ GitHub.sublime-settings
 
 package-lock.json
 *.tmpl.js
+yarn-error.log
