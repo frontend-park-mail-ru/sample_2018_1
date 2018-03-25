@@ -27,7 +27,7 @@ define('UsersModel', function (require) {
 					url: '/me',
 					callback(err, response) {
 						if (err) {
-							if (err.status == 401) {
+							if (!err.status || err.status == 401) {
 								return resolve(null);
 							}
 							return reject(err);

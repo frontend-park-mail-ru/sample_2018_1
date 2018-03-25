@@ -9,10 +9,13 @@
 	}
 
 	document.addEventListener('DOMContentLoaded', function () {
+		require('add-sw');
+
 		const HttpModule = require('HttpModule');
 		const UsersModel = require('UsersModel');
 		const Router = require('Router');
 		const bus = require('bus');
+		const Ws = require('Ws');
 
 		const MenuView = require('MenuView');
 		const ProfileView = require('ProfileView');
@@ -24,12 +27,15 @@
 		switch (window.location.hostname) {
 			case 'localhost':
 				HttpModule.baseUrl = 'http://localhost:3001';
+				Ws.host = 'localhost:3001';
 				break;
 			case 'super-frontend.herokuapp.com':
 				HttpModule.baseUrl = '//super-frontend-backend.herokuapp.com';
+				Ws.host = 'super-frontend-backend.herokuapp.com';
 				break;
 			default:
 				HttpModule.baseUrl = '';
+				Ws.host = window.location.host;
 		}
 
 		const root = document.getElementById('application');

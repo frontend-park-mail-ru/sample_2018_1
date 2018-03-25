@@ -6,13 +6,14 @@
   "scripts": {
     "build": "fest-build --dir=public",
     "start": "npm run build && DEBUG=mylogger node server",
-    "start-api": "PORT=3001 DEBUG=mylogger node --inspect server",
+    "start-api": "PORT=3001 DEBUG=mylogger node server",
     "start:raw": "node server",
     "develop": "npm run start & npm run start-api"
   },
   "contributors": [
     "Dmitry Dorofeev",
     "Ostapenko Anatoliy",
+    "Titova Marina",
     "Alexey Tyuldyukov"
   ],
   "license": "MIT",

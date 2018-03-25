@@ -1,7 +1,8 @@
 define('ChatView', function (require) {
 	const View = require('View');
 	const FormComponent = require('FormComponent');
-	const ws = require('ws');
+	const Ws = require('Ws');
+	const ws = new Ws;
 
 	return class ChatView extends View {
 		constructor() {

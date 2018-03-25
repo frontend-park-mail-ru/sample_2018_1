@@ -3,18 +3,22 @@ const CACHE_NAME = 'sampe_sw-v1';
 // ссылки на кэшируемые файлы
 const cacheUrls = [
 	'/',
+	'/chat',
 	'/login',
 	'/signup',
 	'/profile',
 	'/scoreboard',
-	'/me',
+
 	'/css/main.css',
 	'/css/reset.css',
 	'/css/system-font.css',
+
 	'/js/modules/simple-module-system.js',
 	'/js/application.js',
+	'/js/modules/ws.js',
 	'/js/modules/bus.js',
 	'/js/modules/http.js',
+	'/js/modules/add-sw.js',
 	'/js/modules/router.js',
 	'/js/models/UsersModel.js',
 	'/js/utils/noop.js',
@@ -44,8 +48,10 @@ const cacheUrls = [
 	'/js/views/ProfileView/styles.css',
 	'/js/views/ScoreboardView/styles.css',
 	'/js/views/SignupView/styles.css',
-	'/otter.png',
-	'/node-js-128.png',
+	'/js/views/ChatView/styles.css',
+
+	'/images/node-js-128.png',
+	'/images/otter.png',
 ];
 
 this.addEventListener('install', (event) => {

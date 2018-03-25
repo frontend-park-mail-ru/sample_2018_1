@@ -1,14 +1,13 @@
-define('ws', function (require) {
+define('Ws', function (require) {
 	const bus = require('bus');
 
-	return new class Ws {
+	class Ws {
 		constructor() {
+			if (Ws.__instance) {
+				return Ws.__instance;
+			}
 
-			const address = ['https', 'https:'].includes(location.protocol)
-				? `wss://${location.hostname}:3001/ws`
-				: `ws://${location.hostname}:3001/ws`;
-
-
+			const address = `${window.location.protocol.replace('http', 'ws')}//${Ws.host}/ws`;
 			this.ws = new WebSocket(address);
 			this.ws.onopen = (event) => {
 				console.log(`WebSocket on address ${address} opened`);
@@ -20,6 +19,8 @@ define('ws', function (require) {
 					console.log(`WebSocket closed`);
 				};
 			};
+
+			Ws.__instance = this;
 		}
 
 		handleMessage(event) {
@@ -38,4 +39,8 @@ define('ws', function (require) {
 			this.ws.send(JSON.stringify({type, payload}));
 		}
 	}
+
+	Ws.host = window.location.host;
+
+	return Ws;
 });
