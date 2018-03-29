@@ -19,7 +19,7 @@ define('GameView', function (require) {
 			this.canvas = this.el.querySelector('.js-canvas');
 			this.ctx = this.canvas.getContext('2d');
 
-			this.do7();
+			this.do1();
 			return this;
 		}
 

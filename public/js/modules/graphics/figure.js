@@ -21,8 +21,6 @@ define('graphics/figure', function (require) {
 		 * @private
 		 */
 		draw() {
-			// throw new Error('This method must be overridden');
-
 			const ctx = this.ctx;
 			ctx.rect(this.x, this.y, 50, 50);
 		}
