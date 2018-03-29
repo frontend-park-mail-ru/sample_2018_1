@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+
+	<section class="view game-view">
+		<canvas class="game-view__canvas js-canvas" width="400" height="700"></canvas>
+	</section>
+
+</fest:template>

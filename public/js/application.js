@@ -23,6 +23,7 @@
 		const LoginView = require('LoginView');
 		const SignupView = require('SignupView');
 		const ChatView = require('ChatView');
+		const GameView = require('GameView');
 
 		switch (window.location.hostname) {
 			case 'localhost':
@@ -45,11 +46,12 @@
 
 				new Router(root)
 					.add('/', MenuView)
+					.add('/chat', ChatView)
+					.add('/game', GameView)
 					.add('/login', LoginView)
 					.add('/signup', SignupView)
 					.add('/profile', ProfileView)
 					.add('/scoreboard', ScoreboardView)
-					.add('/chat', ChatView)
 					.start();
 			})
 			.catch(console.error);

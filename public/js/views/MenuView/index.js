@@ -44,6 +44,10 @@ define('MenuView', function (require) {
 					{
 						title: 'Чат',
 						href: '/chat'
+					},
+					{
+						title: 'Игра',
+						href: '/game'
 					}
 				];
 			}
