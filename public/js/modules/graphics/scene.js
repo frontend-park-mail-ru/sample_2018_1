@@ -65,6 +65,11 @@ define('graphics/scene', function (require) {
 			this.backView.forEach(figure => figure.render());
 			this.frontView.forEach(figure => figure.render());
 		}
+
+		clear() {
+			const ctx = this.ctx;
+			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		}
 	}
 
 });

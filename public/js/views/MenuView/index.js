@@ -46,8 +46,12 @@ define('MenuView', function (require) {
 						href: '/chat'
 					},
 					{
-						title: 'Игра',
-						href: '/game'
+						title: 'Игра online',
+						href: '/game/online-mode'
+					},
+					{
+						title: 'Игра offline',
+						href: '/game/offline-mode'
 					}
 				];
 			}

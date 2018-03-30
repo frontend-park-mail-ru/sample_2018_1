@@ -1,17 +1,32 @@
 define('GameView', function (require) {
-	const rand = require('rand');
-
 	const View = require('View');
+	const Game = require('game/game');
+	const GAME_MODES = require('game/modes');
+
 	const Figure = require('graphics/figure');
-	const Rect = require('graphics/rect');
 	const Circle = require('graphics/circle');
 	const Scene = require('graphics/scene');
+	const Rect = require('graphics/rect');
 	const FadingBlock = require('game/game-scene/fading-block');
+
+	const rand = require('rand');
 
 	return class GameView extends View {
 		constructor() {
 			super(`js/views/GameView/GameView.tmpl`);
 			this.canvas = null;
+			this.game = null;
+
+			this.bus.on('CLOSE_GAME', function () {
+				if (this.active) {
+					this.router.open('/');
+				}
+			}.bind(this));
+		}
+
+		destroy() {
+			this.game.destroy();
+			return this;
 		}
 
 		create(attrs) {
@@ -19,8 +34,19 @@ define('GameView', function (require) {
 			this.canvas = this.el.querySelector('.js-canvas');
 			this.ctx = this.canvas.getContext('2d');
 
-			this.do1();
+			this.doGame();
 			return this;
+		}
+
+		doGame() {
+			let mode = '';
+			if (window.location.pathname === '/game/online-mode') {
+				mode = GAME_MODES.ONLINE;
+			} else {
+				mode = GAME_MODES.OFFLINE;
+			}
+			this.game = new Game(mode, this.canvas);
+			this.game.start();
 		}
 
 		do1() {
