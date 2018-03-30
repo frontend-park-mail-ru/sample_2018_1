@@ -45,7 +45,7 @@ define('game/game-scene', function (require) {
 				b.x = 50 + item.coll * 75;
 				b.y = 50 + item.row * 50;
 				b.fadeDeep = 500;
-				b.rotationSpeed = rand(-25, 25) / 1000;
+				b.rotationSpeed = rand(-25, 25) / 10;
 
 				return b;
 			});
@@ -93,7 +93,7 @@ define('game/game-scene', function (require) {
 				b.id = scene.push(b);
 				b.radius = 4;
 
-				b.x = 50 + bullet.coll * 100;
+				b.x = 50 + bullet.coll * 75;
 				b.y = 660 - (660 - (50 + bullet.row * 50)) * bullet.percents;
 
 				return b;

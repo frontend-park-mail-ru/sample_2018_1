@@ -2,6 +2,12 @@ define('game/core', function (require) {
 	const events = require('game/core/events');
 	const bus = require('bus');
 
+	const KEYS = {
+		FIRE: [' ', 'Enter'],
+		LEFT: ['a', 'A', 'ф', 'Ф', 'ArrowLeft'],
+		RIGHT: ['d', 'D', 'в', 'В', 'ArrowRight'],
+	};
+
 	return class GameCore {
 		constructor(controller, scene) {
 			this.controller = controller;
@@ -28,13 +34,14 @@ define('game/core', function (require) {
 				if (Object.keys(actions).some(k => actions[k])) {
 					bus.emit(events.CONTROLS_PRESSED, actions);
 				}
-			}, 100);
+			}, 50);
 		}
 
 		destroy() {
 			clearInterval(this.controllersLoopIntervalId);
 			bus.off(events.START_GAME, this.onGameStarted);
 			bus.off(events.FINISH_GAME, this.onGameFinished);
+			bus.off(events.CONTROLS_PRESSED, this.onControllsPressed);
 			bus.off(events.GAME_STATE_CHANGED, this.onGameStateChanged);
 
 			this.controller.destroy();
@@ -55,6 +62,10 @@ define('game/core', function (require) {
 
 		onGameStateChanged(evt) {
 			throw new Error('This method must be overridden');
+		}
+
+		_pressed(name, data) {
+			return KEYS[name].some(k => data[k.toLowerCase()]);
 		}
 	};
 });
