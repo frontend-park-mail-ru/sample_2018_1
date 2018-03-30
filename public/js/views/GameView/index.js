@@ -34,13 +34,13 @@ define('GameView', function (require) {
 			this.canvas = this.el.querySelector('.js-canvas');
 			this.ctx = this.canvas.getContext('2d');
 
-			this.doGame();
+			this.doGame(attrs);
 			return this;
 		}
 
-		doGame() {
+		doGame(pathname) {
 			let mode = '';
-			if (window.location.pathname === '/game/online-mode') {
+			if (pathname === '/game/online-mode') {
 				mode = GAME_MODES.ONLINE;
 			} else {
 				mode = GAME_MODES.OFFLINE;
