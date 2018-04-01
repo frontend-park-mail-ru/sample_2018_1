@@ -39,7 +39,7 @@ define('Router', function (require) {
 				this.active = null;
 			}
 
-			this.active = view.create();
+			this.active = view.create(path);
 			if (window.location.pathname !== path) {
 				window.history.pushState(null, '', path);
 			}

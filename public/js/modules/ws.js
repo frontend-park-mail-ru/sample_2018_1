@@ -28,7 +28,6 @@ define('Ws', function (require) {
 
 			try {
 				const message = JSON.parse(messageText);
-				console.log(message);
 				bus.emit(message.type, message.payload);
 			} catch (err) {
 				console.error('smth went wront in handleMessage: ', err);

@@ -6,6 +6,10 @@
     <link rel="icon" type="image/png" href="/images/node-js-128.png">
     <title>Sample Application</title>
     <link rel="stylesheet" href="/css/main.css">
+    <script>
+        'use strict';
+        window.onerror = console.error;
+    </script>
 </head>
 <body>
 
@@ -20,9 +24,26 @@
 <script src="/js/modules/router.js" charset="UTF-8"></script>
 <script src="/js/modules/add-sw.js" charset="UTF-8"></script>
 
+<script src="/js/modules/graphics/figure.js" charset="UTF-8"></script>
+<script src="/js/modules/graphics/circle.js" charset="UTF-8"></script>
+<script src="/js/modules/graphics/rect.js" charset="UTF-8"></script>
+<script src="/js/modules/graphics/scene.js" charset="UTF-8"></script>
+
+<script src="/js/modules/game/controllers.js" charset="UTF-8"></script>
+<script src="/js/modules/game/game.js" charset="UTF-8"></script>
+<script src="/js/modules/game/modes.js" charset="UTF-8"></script>
+<script src="/js/modules/game/core/events.js" charset="UTF-8"></script>
+<script src="/js/modules/game/core/index.js" charset="UTF-8"></script>
+<script src="/js/modules/game/core/offline.js" charset="UTF-8"></script>
+<script src="/js/modules/game/core/online.js" charset="UTF-8"></script>
+<script src="/js/modules/game/game-scene/index.js" charset="UTF-8"></script>
+<script src="/js/modules/game/game-scene/player.js" charset="UTF-8"></script>
+<script src="/js/modules/game/game-scene/fading-block.js" charset="UTF-8"></script>
+
 <script src="/js/models/UsersModel.js" charset="UTF-8"></script>
 
 <script src="/js/utils/noop.js" charset="UTF-8"></script>
+<script src="/js/utils/rand.js" charset="UTF-8"></script>
 <script src="/js/utils/EScoreboardTypes.js" charset="UTF-8"></script>
 
 <script src="/js/views/MenuView/MenuView.tmpl.js" charset="UTF-8"></script>
@@ -31,6 +52,7 @@
 <script src="/js/views/LoginView/LoginView.tmpl.js" charset="UTF-8"></script>
 <script src="/js/views/SignupView/SignupView.tmpl.js" charset="UTF-8"></script>
 <script src="/js/views/ChatView/ChatView.tmpl.js" charset="UTF-8"></script>
+<script src="/js/views/GameView/GameView.tmpl.js" charset="UTF-8"></script>
 
 <script src="/js/views/View/index.js" charset="UTF-8"></script>
 <script src="/js/views/LoginView/index.js" charset="UTF-8"></script>
@@ -39,6 +61,7 @@
 <script src="/js/views/SignupView/index.js" charset="UTF-8"></script>
 <script src="/js/views/ProfileView/index.js" charset="UTF-8"></script>
 <script src="/js/views/ChatView/index.js" charset="UTF-8"></script>
+<script src="/js/views/GameView/index.js" charset="UTF-8"></script>
 
 <script src="/js/components/Scoreboard/Scoreboard.tmpl.js" charset="UTF-8"></script>
 <script src="/js/components/Scoreboard/Scoreboard.js" charset="UTF-8"></script>
