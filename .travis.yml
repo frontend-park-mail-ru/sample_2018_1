@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '8'
-scripts:
+script:
 - npm run build
 - scp -i $HOME/frontend.pem -r public ubuntu@jsdaddy.tech:/home/ubuntu/sample
 before_install:
