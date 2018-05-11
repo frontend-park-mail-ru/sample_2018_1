@@ -8,7 +8,8 @@
     "start": "npm run build && DEBUG=mylogger node server",
     "start-api": "PORT=3001 DEBUG=mylogger node server",
     "start:raw": "node server",
-    "develop": "npm run start & npm run start-api"
+    "develop": "npm run start & npm run start-api",
+    "test": "echo ':('"
   },
   "contributors": [
     "Dmitry Dorofeev",
