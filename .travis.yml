@@ -3,6 +3,7 @@ node_js:
 - '8'
 script:
 - npm run build
+- chmod 600 $HOME/frontend.pem
 - ssh-keyscan -H jsdaddy.tech >> ~/.ssh/known_hosts
 - scp -i $HOME/frontend.pem -r public ubuntu@jsdaddy.tech:/home/ubuntu/sample
 before_install:
