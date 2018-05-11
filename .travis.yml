@@ -3,7 +3,7 @@ node_js:
 - '8'
 scripts:
 - npm run build
-- scp -i ~/frontend.pem -r public ubuntu@jsdaddy.tech:/home/ubuntu/sample
+- scp -i $HOME/frontend.pem -r public ubuntu@jsdaddy.tech:/home/ubuntu/sample
 before_install:
 - openssl aes-256-cbc -K $encrypted_4cbeaa932007_key -iv $encrypted_4cbeaa932007_iv
-  -in frontend.pem.enc -out ~\/frontend.pem -d
+  -in frontend.pem.enc -out $HOME/frontend.pem -d
